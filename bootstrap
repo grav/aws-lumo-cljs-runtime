@@ -1,0 +1,8 @@
+#!/bin/bash
+set -euo pipefail
+
+APP_PARTS=(${_HANDLER//\// })
+tmpfile=`mktemp`
+echo "(require '${APP_PARTS[0]})" | cat - /opt/runtime.cljs > $tmpfile
+
+/opt/lumo $tmpfile
