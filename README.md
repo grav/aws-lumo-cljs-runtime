@@ -9,16 +9,19 @@ as well as the [Node 10.x/11.x implementations from LambCI](https://github.com/l
 
 It's still very alpha, but this document contains a step-by-step guide for getting things started.
 
+### Get the pre-built version of Lumo
 
-### Clone Lumo fork
+In order to execute Lumo in an AWS Lambda context, you need a static build with all libraries included. 
+
+You can either get it from here: https://github.com/grav/aws-lumo-cljs-runtime/releases/tag/v1.9 or ...
+
+### Clone Lumo fork and build it
 The fork of Lumo at https://github.com/grav/lumo is prepared for creating a
 static build of Lumo:
 
 ```
 git clone git@github.com:grav/lumo
 ```
-
-### Build Lumo
 
 Build Docker image:
 ```
@@ -34,8 +37,9 @@ docker run -v --rm ami-lumo \
 You'll get an error in the end, but an executable will nevertheless be created in `build/lumo`.
 
 ### Create the runtime archive
+
 ```
-zip -j runtime.zip bootstrap /path/to/lumo/build/lumo runtime.cljs
+zip -j runtime.zip bootstrap /path/to/lumo runtime.cljs
 ```
 
 The flag `-j` just ignores paths and puts everything in the archive root.
