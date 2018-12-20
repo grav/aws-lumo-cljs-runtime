@@ -9,6 +9,8 @@ as well as the [Node 10.x/11.x implementations from LambCI](https://github.com/l
 
 It's still very alpha, but this document contains a step-by-step guide for getting things started.
 
+Note: there's now a publicly available layer with the runtime available with arn `arn:aws:lambda:eu-west-1:313836948343:layer:lumo-runtime:8`, so you should be able to just skip ahead to [Create function arhive](#create-function-archive) and use that arn.
+
 ### Get the pre-built version of Lumo
 
 In order to execute Lumo in an AWS Lambda context, you need a static build with all libraries included. 
@@ -77,6 +79,8 @@ Use the layer `arn` that you received when publishing the layer, including the l
 ```
 aws lambda update-function-configuration --function-name test-lumo --layers arn:aws:lambda:eu-west-1:xxx:layer:lumo-runtime:1
 ```
+
+Note that you can also use the publicly available version of the layer: `arn:aws:lambda:eu-west-1:313836948343:layer:lumo-runtime:8`
 
 ### Invoke the lambda
 ```
