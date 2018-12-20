@@ -15,7 +15,7 @@ In order to execute Lumo in an AWS Lambda context, you need a static build with 
 
 You can either get it from here: https://github.com/grav/aws-lumo-cljs-runtime/releases/tag/v1.9 or ...
 
-### Clone Lumo fork and build it
+### ... or clone Lumo fork and build it
 The fork of Lumo at https://github.com/grav/lumo is prepared for creating a
 static build of Lumo:
 
@@ -23,7 +23,7 @@ static build of Lumo:
 git clone git@github.com:grav/lumo
 ```
 
-Build Docker image:
+Build Docker image in this repo:
 ```
 docker build . -t ami-lumo
 ```
