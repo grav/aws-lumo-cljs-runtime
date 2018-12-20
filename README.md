@@ -64,7 +64,7 @@ The `my_package` dir in this repo contains a simple handler, but you can provide
 ### Create the lambda
 
 For the `--role` parameter, you must supply a role that can execute lambdas.
-See https://docs.aws.amazon.com/lambda/latest/dg/runtimes-walkthrough.html#runtimes-walkthrough-function
+See https://docs.aws.amazon.com/lambda/latest/dg/runtimes-walkthrough.html#runtimes-walkthrough-prereqs
 
 The `--handler` parameter must correspond to the directory structure of the ClojureScript code that you provide:
 
