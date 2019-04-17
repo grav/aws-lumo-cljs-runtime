@@ -53,12 +53,12 @@
                  ;; We treat all errors from the API as an unrecoverable error. This is
                  ;; because the API returns 4xx errors for responses that are too long. In
                  ;; that case, we simply log the output and fail.
-                 (assert (= status 200) (str "Error from Runtime API\n"
-                                             (-> {:url url
-                                                  :response res
-                                                  :error runtime-error}
-                                                 (clj->js)
-                                                 (js/JSON.stringify nil 2))))
+                 (assert (successful? status) (str "Error from Runtime API\n"
+                                                   (-> {:url url
+                                                        :response res
+                                                        :error runtime-error}
+                                                       (clj->js)
+                                                       (js/JSON.stringify nil 2))))
                  res)))))
 
 (defonce state (atom nil))
@@ -74,12 +74,12 @@
                  ;; We treat all errors from the API as an unrecoverable error. This is
                  ;; because the API returns 4xx errors for responses that are too long. In
                  ;; that case, we simply log the output and fail.
-                 (assert (= status 200) (str "Error from Runtime API\n"
-                                             (-> {:url url
-                                                  :response response
-                                                  :context @state}
-                                                 (clj->js)
-                                                 (js/JSON.stringify nil 2))))
+                 (assert (successful? status) (str "Error from Runtime API\n"
+                                                   (-> {:url url
+                                                        :response response
+                                                        :context @state}
+                                                       (clj->js)
+                                                       (js/JSON.stringify nil 2))))
 
                  (let [context {:aws-request-id aws-request-id
                                 :lambda-runtime-invoked-function-arn lambda-runtime-invoked-function-arn}]
@@ -100,11 +100,11 @@
                                          js/JSON.stringify)}))))
         (.then (fn [{:keys [status]
                      :as response}]
-                 (assert (= status 202) (str "Error from Runtime API\n"
-                                             (-> {:context @state
-                                                  :response response}
-                                                 (clj->js)
-                                                 (js/JSON.stringify nil 2))))))
+                 (assert (successful? status) (str "Error from Runtime API\n"
+                                                   (-> {:context @state
+                                                        :response response}
+                                                       (clj->js)
+                                                       (js/JSON.stringify nil 2))))))
         (.catch (fn [err]
                   (post-error {:error err
                                :context (:context @state)})))
