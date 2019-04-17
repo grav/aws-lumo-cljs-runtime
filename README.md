@@ -44,6 +44,13 @@ You'll get an error in the end, but an executable will nevertheless be created i
 zip -j runtime.zip bootstrap /path/to/lumo runtime.cljs
 ```
 
+or
+
+```
+make clean (if necessary)
+env LUMO_BIN_PATH=/path/to/lumo make
+```
+
 The flag `-j` just ignores paths and puts everything in the archive root.
 
 ### Publish layer
@@ -52,6 +59,12 @@ A layer can be used by a lambda to pull in additional code. In this context, the
 
 ```
 aws lambda publish-layer-version --layer-name lumo-runtime --zip-file fileb://runtime.zip
+```
+
+or
+
+```
+make publish
 ```
 
 You'll get an `arn` with a layer version back, which you'll need when configurating the lambda.
