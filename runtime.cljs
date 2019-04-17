@@ -44,6 +44,7 @@
                                            (.split "\n")
                                            (.slice 1))}]
     (-> (request {:url url
+                  :method :post
                   :headers {"Content-Type" "application/json"
                             "Lambda-Runtime-Function-Error-Type" (.-name error)}
                   :body (js/JSON.stringify runtime-error)})
