@@ -1,8 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-APP_PARTS=(${_HANDLER//\// })
-tmpfile=`mktemp`
-echo "(require '${APP_PARTS[0]})" | cat - /opt/runtime.cljs > $tmpfile
+bin_dir=${BIN_DIR:-/opt}
+app_parts=(${_HANDLER//\// })
 
-/opt/lumo $tmpfile
+"$bin_dir/lumo" --classpath ".:${bin_dir}" -e "(require (quote ${app_parts[0]}))" -m runtime

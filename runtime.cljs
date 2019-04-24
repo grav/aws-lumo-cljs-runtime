@@ -1,5 +1,6 @@
-(require 'http)
-(require 'clojure.string)
+(ns runtime
+  (:require clojure.string
+            http))
 
 (def runtime-path (str "http://" (.-AWS_LAMBDA_RUNTIME_API js/process.env) "/2018-06-01/runtime"))
 
@@ -33,7 +34,8 @@
              (.end request)))))
 
 (def handle
-  (eval (symbol (.-_HANDLER js/process.env))))
+  (do (assert (.-_HANDLER js/process.env) "The _HANDLER env vars must contain the handler location.\n\nSee https://docs.aws.amazon.com/lambda/latest/dg/runtimes-custom.html\n")
+      (eval (symbol (.-_HANDLER js/process.env)))))
 
 (defn post-error [{error :error
                    {aws-request-id :aws-request-id} :context}]
@@ -63,7 +65,8 @@
 
 (defonce state (atom nil))
 
-(defn start []
+(defn -main
+  [& args]
   (let [url (str runtime-path "/invocation/next")]
     (-> (request {:url url})
         (.then (fn [{:keys [status body]
@@ -108,6 +111,4 @@
         (.catch (fn [err]
                   (post-error {:error err
                                :context (:context @state)})))
-        (.then start))))
-
-(start)
+        (.then -main))))
