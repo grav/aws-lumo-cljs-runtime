@@ -27,16 +27,16 @@ git clone git@github.com:grav/lumo
 
 Build Docker image in this repo:
 ```
+cd /path/to/aws-lumo-cljs-runtime
 docker build . -t ami-lumo
 ```
 
 Build Lumo, pointing out the fork of Lumo:
 ```
-docker run -v --rm ami-lumo \
-  -v /path/to/lumo:/lumo
+docker run -v /path/to/lumo:/lumo --rm ami-lumo \
 ```
 
-You'll get an error in the end, but an executable will nevertheless be created in `build/lumo`.
+You'll get an error in the end, but an executable will nevertheless be created in `/path/to/lumo/build/lumo`.
 
 ### Create the runtime archive
 
