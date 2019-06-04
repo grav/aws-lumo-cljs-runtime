@@ -57,6 +57,7 @@ aws lambda publish-layer-version --layer-name lumo-runtime --zip-file fileb://ru
 You'll get an `arn` with a layer version back, which you'll need when configurating the lambda.
 
 ### Create function archive
+
 ```
 zip -r function.zip my_package
 ```
@@ -102,4 +103,14 @@ You should receive something like this in `response.txt`:
     }
   }
 }
+```
+
+### Using the Makefile
+
+For convenience, the above operations can also be executed with `make`:
+
+```
+make clean (if necessary)
+LUMO_BIN_PATH=/path/to/lumo make
+make publish
 ```
