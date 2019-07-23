@@ -5,7 +5,7 @@ all: ${RUNTIME_PACKAGE}
 .PHONY: publish clean
 
 clean:
-	rm ${RUNTIME_PACKAGE}
+	rm -f ${RUNTIME_PACKAGE}
 
 ${RUNTIME_PACKAGE}:
 ifndef LUMO_BIN_PATH
