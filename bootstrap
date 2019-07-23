@@ -1,7 +1,11 @@
 #!/bin/bash
 set -euo pipefail
 
+function join { local IFS="$1"; shift; echo "$*"; }
+
 bin_dir=${BIN_DIR:-/opt}
 app_parts=(${_HANDLER//\// })
+libs=$(join : $(find "$bin_dir/lib" lib -name '*.jar' 2>/dev/null))
+classpath=".:${bin_dir}:${libs:-.}"
 
-"$bin_dir/lumo" --classpath ".:${bin_dir}" -e "(require (quote ${app_parts[0]}))" -m runtime
+"$bin_dir/lumo" --classpath "$classpath" -e "(require (quote ${app_parts[0]}))" -m runtime
