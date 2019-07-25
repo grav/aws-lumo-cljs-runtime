@@ -5,7 +5,8 @@ function join { local IFS="$1"; shift; echo "$*"; }
 
 bin_dir=${BIN_DIR:-/opt}
 app_parts=(${_HANDLER//\// })
-libs=$(join : $(find "$bin_dir/lib" lib -name '*.jar' 2>/dev/null))
+lib_dir=${LIB_DIR:-lib}
+libs=$(join : $(find "$bin_dir/$lib_dir" $lib_dir -name '*.jar' 2>/dev/null))
 classpath=".:${bin_dir}:${libs:-.}"
 
 "$bin_dir/lumo" --classpath "$classpath" -e "(require (quote ${app_parts[0]}))" -m runtime
