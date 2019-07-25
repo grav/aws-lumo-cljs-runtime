@@ -38,4 +38,24 @@ aws lambda invoke --function-name $fname --payload '{}' $response_file | jq -e '
 
 
 # jar-dependency in separate layer
-# TODO
+
+fname=lumo-dep-layer
+fn_zipfile=$(mktemp -u).zip
+layer_zipfile=$(mktemp -u).zip
+response_file=$(mktemp)
+
+( cd examples/lib-example &&
+zip -qr $fn_zipfile lib_example 
+zip -qr $layer_zipfile lib
+)
+
+aws lambda delete-function --function-name $fname 2> /dev/null || true
+aws lambda create-function --function-name $fname --zip-file fileb://$fn_zipfile \
+  --runtime provided --role $role --handler lib-example.core/handler
+
+liblayer=`aws lambda publish-layer-version \
+      --layer-name lumo-dep-lib-layer \
+      --zip-file fileb://$layer_zipfile | jq -r '.LayerVersionArn'`
+
+aws lambda update-function-configuration --function-name $fname --layers "$runtime" "$liblayer"
+aws lambda invoke --function-name $fname --payload '{}' $response_file | jq -e '.FunctionError | not' || ( cat $response_file && exit 1 )
