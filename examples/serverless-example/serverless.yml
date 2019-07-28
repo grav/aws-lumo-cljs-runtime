@@ -1,0 +1,23 @@
+service: runtime-provided-test
+
+provider:
+  name: aws
+  region: eu-west-1 # the runtime is in this region, so we need to be as well
+  runtime: provided
+  logs:
+    restApi: true # we'd like api gateway logging in CloudWatch
+
+functions:
+  hello:
+    handler: my-package.my-ns/my-handler # this is the entrypoint in the source
+    layers:
+      - arn:aws:lambda:eu-west-1:313836948343:layer:lumo-runtime:17 # public lumo-cljs runtime layer
+    events:
+      - http: GET hello # create an API Gateway resource
+
+package:
+  exclude:
+    - ./** # start by excluding everything
+  include:
+    - my_package/** # ... and just include cljs source
+
