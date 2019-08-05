@@ -14,9 +14,7 @@ response_file=$(mktemp)
 ( cd examples/aws-sdk-example &&
 rm -rf node_modules && npm install
 zip -qr $zipfile aws_sdk_example
-rm -rf nodejs
-mkdir nodejs
-mv node_modules nodejs/
+rm -rf nodejs;  mkdir nodejs; mv node_modules nodejs/
 zip -qr $layer_zipfile nodejs
 )
 
