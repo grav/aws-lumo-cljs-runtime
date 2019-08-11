@@ -1,11 +1,6 @@
 (ns runtime
   (:require clojure.string
-            cljs.nodejs))
-
-
-;; Monkey-patching js/require somehow
-;; breaks `(ns foo (:require http)))`
-(def http (cljs.nodejs/require "http"))
+            http))
 
 (def runtime-path (str "http://" (.-AWS_LAMBDA_RUNTIME_API js/process.env) "/2018-06-01/runtime"))
 
@@ -20,7 +15,7 @@
         (let [headers (merge headers
                              (when body
                                {"Content-Length" (js/Buffer.byteLength body)}))
-              request (http.request
+              request (http/request
                         url
                         (clj->js {:method  (clojure.string/upper-case (name method))
                                   :headers headers})

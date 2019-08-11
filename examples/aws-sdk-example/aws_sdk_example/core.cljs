@@ -4,7 +4,7 @@
 ;; same place where the default nodejs runtime does 
 ;; (/opt/nodejs/node_modules)
 (let [req' js/require]
-  (set! goog.global.require
+  (set! js/require
         (fn [s]
           (try
             (req' s)
