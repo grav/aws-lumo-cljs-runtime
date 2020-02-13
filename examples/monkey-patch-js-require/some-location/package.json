@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "dependencies": {
+    "meaning-of-life": "file:../meaning"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
