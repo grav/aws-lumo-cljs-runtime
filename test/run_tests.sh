@@ -67,16 +67,16 @@ fn_zipfile=$(mktemp -u).zip
 layer_zipfile=$(mktemp -u).zip
 response_file=$(mktemp)
 
-(cd examples/npm-layer/some-location && npm i)
-
 ( cd examples/npm-layer &&
-zip -qr $fn_zipfile lib_example 
-zip -qr $layer_zipfile lib
+zip -qr $fn_zipfile test_require &&
+rm -rf some-location/node_modules &&
+npm install --prefix some-location && 
+zip -qr "$layer_zipfile" some-location
 )
 
 aws lambda delete-function --function-name $fname 2> /dev/null || true
 aws lambda create-function --function-name $fname --zip-file fileb://$fn_zipfile \
-  --runtime provided --role $role --handler lib-example.core/handler
+  --runtime provided --role $role --handler test-require.core/run-tests
 
 liblayer=`aws lambda publish-layer-version \
       --layer-name lumo-dep-lib-layer \
