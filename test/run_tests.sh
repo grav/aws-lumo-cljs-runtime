@@ -8,24 +8,17 @@ role=$ROLE
 # aws sdk
 fname=lumo-s3
 zipfile=$(mktemp -u).zip
-layer_zipfile=$(mktemp -u).zip
 response_file=$(mktemp)
 
 ( cd examples/aws-sdk-example &&
-rm -rf node_modules && npm install
-zip -qr $zipfile aws_sdk_example
-rm -rf nodejs;  mkdir nodejs; mv node_modules nodejs/
-zip -qr $layer_zipfile nodejs
+rm -rf node_modules && npm install &&
+zip -qr $zipfile aws_sdk_example node_modules
 )
-
-liblayer=`aws lambda publish-layer-version \
-      --layer-name lumo-s3-lib-layer \
-      --zip-file fileb://$layer_zipfile | jq -r '.LayerVersionArn'`
 
 aws lambda delete-function --function-name $fname 2> /dev/null || true
 aws lambda create-function --function-name $fname --zip-file fileb://$zipfile \
   --runtime provided --role $role --handler aws-sdk-example.core/list-buckets
-aws lambda update-function-configuration --function-name $fname --layers "$runtime" "$liblayer"
+aws lambda update-function-configuration --function-name $fname --layers "$runtime"
 aws lambda invoke --function-name $fname --payload '{}' $response_file | jq -e '.FunctionError | not' || ( cat $response_file && exit 1 )
 
 # jar-dependency in code
