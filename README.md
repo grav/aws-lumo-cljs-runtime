@@ -1,3 +1,13 @@
+## Custom runtime for running ClojureScript on AWS Lambda 
+
+You can use this ARN for running ClojureScript lambdas in the `eu-west-1` region:
+
+```
+arn:aws:lambda:eu-west-1:313836948343:layer:lumo-runtime:20
+```
+
+### About
+
 This repo contains an implementation of a [custom AWS Lambda runtime](https://docs.aws.amazon.com/lambda/latest/dg/runtimes-custom.html)
 that enables executions of [ClojureScript](http://clojurescript.org) code in AWS Lambda without any pre-compilation.
 
@@ -9,7 +19,7 @@ as well as the [Node 10.x/11.x implementations from LambCI](https://github.com/l
 
 It's still very alpha, but this document contains a step-by-step guide for getting things started.
 
-Note: there's now a publicly available layer with the runtime available with arn `arn:aws:lambda:eu-west-1:313836948343:layer:lumo-runtime:8`, so you should be able to just skip ahead to [Create function arhive](#create-function-archive) and use that arn.
+Note: there's now a publicly available layer with the runtime available with arn `arn:aws:lambda:eu-west-1:313836948343:layer:lumo-runtime:20`, so you should be able to just skip ahead to [Create function arhive](#create-function-archive) and use that arn.
 
 ### Get the pre-built version of Lumo
 
