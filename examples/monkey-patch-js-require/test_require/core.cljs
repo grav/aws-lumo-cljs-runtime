@@ -13,7 +13,7 @@
 
     (assert (= 42 (.tell_me (require' "meaning-of-life"))))
 
-    (let [req' js/require]
+    #_(let [req' js/require]
        (set! js/require
          (fn [s]
            (try
