@@ -59,3 +59,29 @@ liblayer=`aws lambda publish-layer-version \
 
 aws lambda update-function-configuration --function-name $fname --layers "$runtime" "$liblayer"
 aws lambda invoke --function-name $fname --payload '{}' $response_file | jq -e '.FunctionError | not' || ( cat $response_file && exit 1 )
+
+# npm-dependency in separate layer
+
+fname=lumo-npm-layer
+fn_zipfile=$(mktemp -u).zip
+layer_zipfile=$(mktemp -u).zip
+response_file=$(mktemp)
+
+( cd examples/npm-layer &&
+zip -qr $fn_zipfile test_require &&
+rm -rf some-location/node_modules &&
+npm install --prefix some-location && 
+ln -sf some-location nodejs &&
+zip -qr "$layer_zipfile" nodejs
+)
+
+aws lambda delete-function --function-name $fname 2> /dev/null || true
+aws lambda create-function --function-name $fname --zip-file fileb://$fn_zipfile \
+  --runtime provided --role $role --handler test-require.core/run-tests
+
+liblayer=`aws lambda publish-layer-version \
+      --layer-name lumo-dep-lib-layer \
+      --zip-file fileb://$layer_zipfile | jq -r '.LayerVersionArn'`
+
+aws lambda update-function-configuration --function-name $fname --layers "$runtime" "$liblayer"
+aws lambda invoke --function-name $fname --payload '{}' $response_file | jq -e '.FunctionError | not' || ( cat $response_file && exit 1 )
