@@ -71,7 +71,8 @@ response_file=$(mktemp)
 zip -qr $fn_zipfile test_require &&
 rm -rf some-location/node_modules &&
 npm install --prefix some-location && 
-zip -qr "$layer_zipfile" some-location
+ln -sf some-location nodejs &&
+zip -qr "$layer_zipfile" nodejs
 )
 
 aws lambda delete-function --function-name $fname 2> /dev/null || true
