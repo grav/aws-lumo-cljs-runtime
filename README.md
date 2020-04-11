@@ -32,7 +32,7 @@ See the [`minimal`](examples/minimal) example for info on how to use a custom ru
 
 You can build and deploy the runtime yourself. See [`BUILD.md`](BUILD.md) for instructions.
 
-### Background
+### Background and acknowledgements
  
 This repo contains an implementation of a [custom AWS Lambda runtime](https://docs.aws.amazon.com/lambda/latest/dg/runtimes-custom.html)
 that enables executions of [ClojureScript](http://clojurescript.org) code in AWS Lambda without any pre-compilation.
