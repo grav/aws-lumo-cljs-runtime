@@ -14,9 +14,9 @@ However, as it supports third party dependencies, both from NodeJS and ClojureSc
 
 ### How do I get started?
 
-The  [`minimal`](example/minimal) example illustrates how to get going in the simplest way. You can either check out the code in this repo, or  directly type the example into the editor of the AWS Lambda Console.
+The  [`minimal`](examples/minimal) example illustrates how to get going in the simplest way. You can either check out the code in this repo, or  directly type the example into the editor of the AWS Lambda Console.
 
-Eventually you'll want to create more elaborate programs. Checkout the [README in the `example` folder](example) for an overview.
+Eventually you'll want to create more elaborate programs. Checkout the [README in the `examples` folder](examples) for an overview.
 
 ### Layer ARN
 
@@ -26,7 +26,7 @@ The newest version of the runtime is deployed in the `eu-west-1` region, and has
 arn:aws:lambda:eu-west-1:313836948343:layer:lumo-runtime:20
 ```
 
-See the [`minimal`](example/minimal) example for info on how to use a custom runtime. 
+See the [`minimal`](examples/minimal) example for info on how to use a custom runtime. 
 
 ### Building the runtime
 
