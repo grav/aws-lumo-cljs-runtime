@@ -93,6 +93,7 @@ since it's created in the same region:
 
 ```
 aws lambda update-function-configuration --function-name minimal1 \
+-- region eu-west-1
 --layers arn:aws:lambda:eu-west-1:313836948343:layer:lumo-runtime:20
 
 ```
@@ -101,7 +102,7 @@ aws lambda update-function-configuration --function-name minimal1 \
 You can now test the lambda function using:
 
 ```
-aws lambda invoke --function-name minimal1 --payload '{"foo":42}' response.txt
+aws lambda invoke --function-name minimal1 --region eu-west-1 --payload '{"foo":42}' response.txt
 ```
 
 You should receive something like this in `response.txt`:
