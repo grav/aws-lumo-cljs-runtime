@@ -17,7 +17,7 @@ TODO: docs
 
 #### [npm-layer](npm-layer)
 
-Consuming nodejs dependencies as a separate layer, to avoid having to re-deploy all dependencies 
+Consuming NodeJS dependencies as a separate layer, to avoid having to re-deploy all dependencies 
 when your source code updates 
 
 TODO: docs
