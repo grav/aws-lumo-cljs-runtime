@@ -10,7 +10,7 @@ It uses Lumo to execute ClojureScript and supports both ClojureScript (jars) and
 
 The runtime was initially created to lower the barrier for writing and executing ClojureScript in AWS Lambda: you can write code directly in the AWS Lambda console and execute it by pressing a button. See this short video tutorial: https://vimeo.com/391237884
 
-However, as it supports third party dependencies, both from NodeJS and ClojureScript, it is also an easy way of getting meaningful ClojureScript applications running in AWS Lambda.
+However, as it supports third party dependencies, both from NodeJS and ClojureScript, it also serves as an easy way of getting meaningful ClojureScript applications running in AWS Lambda.
 
 ### How do I get started?
 
