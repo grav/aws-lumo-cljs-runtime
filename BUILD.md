@@ -31,8 +31,6 @@ The (long) process will compile the lumo static binary under `/path/to/lumo/buil
 
 ## Building the runtime and publishing it as a Lambda layer
 
-For convenience, the above operations can also be executed with `make`:
-
 The supplied `Makefile` in this repo will take care of the details:
 
 ```
