@@ -43,4 +43,4 @@ was inspired by [this episode of The Repl podcast](https://www.therepl.net/episo
 It's based on the [Tutorial from Amazon](https://docs.aws.amazon.com/lambda/latest/dg/runtimes-walkthrough.html)
 as well as the [Node 10.x/11.x implementations from LambCI](https://github.com/lambci/node-custom-lambda).
 
-Thanks to [Andrea Richiardi](https://github.com/arichiardi), it was grown from a mere proof of concept into a usable project.
+With the help of [Andrea Richiardi](https://github.com/arichiardi), it was grown from a mere proof of concept into a usable project.
