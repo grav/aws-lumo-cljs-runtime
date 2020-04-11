@@ -13,7 +13,7 @@ You can check out this video that shows you how: https://vimeo.com/391237884, or
 
 #### 1. Log in to AWS and go to the Lambda service 
 
-Pick the Ireland (`eu-west-1`) region, since there's already a deployed runtime in that region
+Pick the Ireland (`eu-west-1`) region, since there's already a deployed runtime in that region.
 
 #### 2. Create a new function 
 
@@ -31,7 +31,7 @@ arn:aws:lambda:eu-west-1:313836948343:layer:lumo-runtime:20
 
 Click the function name in the Designer, scroll down to the editor, and create a new folder: `my_package`, by right-clicking the root-folder and picking "New folder".
 
-Then right click the `my_package` folder and create a new file, `my_ns.cljs`. 
+Then right-click the `my_package` folder and create a new file, `my_ns.cljs`. 
 
 Double-click this file and paste the contents of the [`my_ns.cljs`](my_ns.cljs) file into it. Notice that the editor syntax-highlights the code, which is a nice detail!
 
