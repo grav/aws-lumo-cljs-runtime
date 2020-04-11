@@ -92,7 +92,7 @@ A runtime is already deployed in the `eu-west-1` region, so you can use its ARN 
 since it's created in the same region:
 
 ```
-aws lambda update-function-configuration --function-name test-lumo \
+aws lambda update-function-configuration --function-name minimal1 \
 --layers arn:aws:lambda:eu-west-1:313836948343:layer:lumo-runtime:20
 
 ```
