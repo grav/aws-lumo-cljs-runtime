@@ -7,9 +7,9 @@ This example illustrates how to compute dependencies for a project and create a 
 It consists of a simple namespace that will query the Wikipedia API and do a simple calculation on the result.
 
 The example depends on the [httpurr](https://github.com/funcool/httpurr) client, which in turn has a dependency 
-(a transitive dependency from the perspective of the example code) on [promesa](https://docs.aws.amazon.com/lambda/latest/dg/lambda-intro-execution-role.html)
+(a transitive dependency from the perspective of the example code) on [promesa](https://docs.aws.amazon.com/lambda/latest/dg/lambda-intro-execution-role.html).
 
-Since Lumo doesn't generate classpaths or download dependencies, 
+Since Lumo (our runtime) doesn't generate classpaths or download dependencies, 
 we can instead calculate the dependencies via [tools.deps](https://clojure.org/guides/deps_and_cli), by specifying them in a 
 `deps.edn` file and invoking the `clj` cli.
 
