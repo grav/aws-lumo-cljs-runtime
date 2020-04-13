@@ -1,13 +1,18 @@
+## Example code
+
 This directory contains various examples of using the custom runtime in AWS:
 
 #### [minimal](minimal)
 
 A minimal example of executing ClojureScript on AWS Lambda with detailed usage instructions. 
 
-
 #### [aws-sdk-example](aws-sdk-example)
 
 Demonstrates how to communicates with S3 from ClojureScript, using the AWS SDK. 
+
+#### [http-example](http-example)
+
+Demonstrates how to create a separate layer for dependencies.
 
 #### [lib-example](lib-example)
 
