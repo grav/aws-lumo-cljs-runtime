@@ -13,6 +13,10 @@ Since Lumo doesn't generate classpaths or download dependencies,
 we can instead calculate the dependencies via [tools.deps](https://clojure.org/guides/deps_and_cli), by specifying them in a 
 `deps.edn` file and invoking the `clj` cli.
 
+### Separate layer
+
+Since our dependencies might not update very often, we can add them to AWS Lambda as a separate layer. This way,  we can iterate faster on the application code, by not having to re-upload the jar-files when the dependencies don't change.
+
 ### How to use:
 
 There are two scripts with the source code:
