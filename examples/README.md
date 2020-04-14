@@ -12,21 +12,17 @@ Demonstrates how to communicates with S3 from ClojureScript, using the AWS SDK.
 
 #### [http-example](http-example)
 
-Demonstrates how to create a separate layer for dependencies.
+Demonstrates how to create a separate layer for dependencies (in this case jars)
+
+#### [node-deps-example](node-deps-example)
+
+Demonstrates how to consuming NodeJS dependencies
 
 #### [lib-example](lib-example)
 
 Demonstrates using 3rd party dependencies. 
 
 TODO: docs
-
-#### [node-layer-example](node-layer-example)
-
-Consuming NodeJS dependencies as a separate layer, to avoid having to re-deploy all dependencies 
-when your source code updates 
-
-TODO: docs
-
 
 #### [serverless-example](serverless-example)
 
