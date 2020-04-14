@@ -9,6 +9,6 @@
   "author": "Mikkel Gravgaard <mikkel@klokke.dk> (https://github.com/grav)",
   "license": "ISC",
   "devDependencies": {
-    "serverless": "^1.48.4"
+    "serverless": "^1.67.3"
   }
 }
