@@ -7,7 +7,7 @@ The runtime will look for dependencies in any `node_modules` directory in the la
 In this example, the `nodejs` directory contains a package.json file that both specifies
 an external dependency (is-odd) as well as a local dependency (meaning-of-life).
 
-### Running the example in AWS:
+### Running the example in AWS
 
 - create the lambda by specifying the runtime and a [lambda execution role](https://docs.aws.amazon.com/lambda/latest/dg/lambda-intro-execution-role.html):
 ```
