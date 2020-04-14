@@ -5,3 +5,6 @@
 (defn meaning-of-life []
   (.tell_me (js/require "meaning-of-life")))
   
+(defn handler [_]
+  {:meaning-of-life-is-odd? (-> (meaning-of-life) is-odd?)})
+
