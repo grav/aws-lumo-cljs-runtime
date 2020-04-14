@@ -5,7 +5,7 @@ This example illustrates how to use NodeJS dependencies.
 The runtime will look for dependencies in any `node_modules` directory in the lambda-code.
 
 In this example, the `nodejs` directory contains a package.json file that both specifies
-an external dependency (is-odd) as well as a local dependecy (meaning-of-life).
+an external dependency (is-odd) as well as a local dependency (meaning-of-life).
 
 ### Running the example in AWS:
 
