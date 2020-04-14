@@ -25,11 +25,11 @@ There are two scripts with the source code:
 
 To get going:
 1. run `make_deps_layer.sh` and copy the resulting `LayerVersionArn`
-2. run `make_lambda.sh` to create the lambda-function, specifying the layer from the first step 
+2. run `make_lambda.sh` to create the lambda-function, specifying the runtime, the layer from the first step 
 and a [lambda execution role](https://docs.aws.amazon.com/lambda/latest/dg/lambda-intro-execution-role.html):
 
 ```
-$ LAYER_VERSION_ARN=arn:aws:lambda:...:http-example-deps:1 ROLE=arn:aws:iam:... ./make_lambda.sh
+$ RUNTIME=arn:... LAYER_VERSION_ARN=arn:aws:lambda:...:http-example-deps:1 ROLE=arn:aws:iam:... ./make_lambda.sh
 ```
 
 3. invoke the lambda with a query:
