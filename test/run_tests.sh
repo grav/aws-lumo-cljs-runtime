@@ -60,6 +60,26 @@ liblayer=`aws lambda publish-layer-version \
 aws lambda update-function-configuration --function-name $fname --layers "$runtime" "$liblayer"
 aws lambda invoke --function-name $fname --payload '{}' $response_file | jq -e '.FunctionError | not' || ( cat $response_file && exit 1 )
 
+# node-dependency in code
+
+fname=lumo-node-example
+fn_zipfile=$(mktemp -u).zip
+response_file=$(mktemp)
+
+( cd examples/node-deps-example &&
+rm -rf nodejs/node_modules &&
+npm install --prefix nodejs && 
+zip -qr "$fn_zipfile" test_require &&
+cd nodejs && zip -qr "$fn_zipfile" node_modules 
+)
+
+aws lambda delete-function --function-name $fname 2> /dev/null || true
+aws lambda create-function --function-name $fname --zip-file fileb://$fn_zipfile \
+  --runtime provided --role $role --handler test-require.core/handler
+
+aws lambda update-function-configuration --function-name $fname --layers "$runtime" 
+aws lambda invoke --function-name $fname --payload '{}' $response_file | jq -e '.FunctionError | not' || ( cat $response_file && exit 1 )
+
 # node-dependency in separate layer
 
 fname=lumo-node-layer
@@ -71,7 +91,6 @@ response_file=$(mktemp)
 zip -qr $fn_zipfile test_require &&
 rm -rf nodejs/node_modules &&
 npm install --prefix nodejs && 
-# ln -sf some-location nodejs &&
 zip -qr "$layer_zipfile" nodejs
 )
 

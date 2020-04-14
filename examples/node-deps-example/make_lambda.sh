@@ -7,7 +7,8 @@ if [ -z "$RUNTIME" ]; then echo "RUNTIME required"; exit 1; fi
 
 filename=$(mktemp -u).zip
 
-( zip -r $filename test_require nodejs )
+ zip -r $filename test_require 
+ ( cd nodejs && zip -r $filename node_modules )
 
 fname=node-deps-example
 
