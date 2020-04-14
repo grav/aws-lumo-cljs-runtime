@@ -19,7 +19,7 @@ $ RUNTIME=arn:... ROLE=arn:... ./make_lambda.sh
 $ aws lambda invoke --function-name node-deps-example --payload '' response.txt
 ```
 
-The response should contain some json.
+The `response.txt` should contain some json.
 
 ### Creating a separate layer for the NodeJS dependencies
 
