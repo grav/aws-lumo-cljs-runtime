@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "is-odd": "^3.0.1",
     "meaning-of-life": "file:../meaning"
   },
   "scripts": {
