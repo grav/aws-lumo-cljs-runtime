@@ -20,7 +20,7 @@ Demonstrates using 3rd party dependencies.
 
 TODO: docs
 
-#### [npm-layer](npm-layer)
+#### [node-layer-example](node-layer-example)
 
 Consuming NodeJS dependencies as a separate layer, to avoid having to re-deploy all dependencies 
 when your source code updates 
