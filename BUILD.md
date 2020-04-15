@@ -34,7 +34,7 @@ The (long) process will compile the lumo static binary under `/path/to/lumo/buil
 The supplied `Makefile` in this repo will take care of the details:
 
 ```
-make clean (if necessary)
-LUMO_BIN_PATH=/path/to/lumo make
+make clean # (if necessary)
+LUMO_BIN_PATH=/path/to/lumo make # point to lumo binary from the step above
 make publish
 ```
