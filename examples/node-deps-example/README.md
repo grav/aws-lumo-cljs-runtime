@@ -26,8 +26,8 @@ The `response.txt` should contain some json.
 Creating a separate layer for dependencies can speed up the development process,
 since you do not need to upload dependencies every time your application code changes.
 
-The runtime will look for a `nodejs/node_modules` directory in additional layers, 
-so you just need to create a layer with the `nodejs` directory containing the `node_modules` 
+The runtime will look for a `node_modules` directory in additional layers, 
+so you just need to create a layer with the `node_modules` 
 folder and associate the lambda-function with this layer.
 
 See the [`http-example`](../http-example) for details on how to do this.
