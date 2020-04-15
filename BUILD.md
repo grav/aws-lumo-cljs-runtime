@@ -21,7 +21,7 @@ git clone git@github.com:anmonteiro/lumo   # anywhere on your filesystem
 Finally, build using the image:
 
 ```
-docker run -v /path/to/lumo:/lumo -v /home/user/.m2:/root/.m2 -v /home/user/.boot/cache:/.boot/cache --rm lumo-musl-ami
+docker run -v /path/to/lumo:/lumo -v $HOME/.m2:/root/.m2 -v $HOME/.boot/cache:/.boot/cache --rm arichiardi/lumo-musl-ami
 ```
 
 The `/root/.m2` and `/.boot/cache` mappings are optional but recommended for

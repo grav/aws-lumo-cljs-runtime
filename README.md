@@ -23,7 +23,7 @@ Eventually you'll want to create more elaborate programs. Checkout the [README i
 The newest version of the runtime is deployed in the `eu-west-1` region, and has the following ARN:
 
 ```
-arn:aws:lambda:eu-west-1:313836948343:layer:lumo-runtime:20
+arn:aws:lambda:eu-west-1:313836948343:layer:lumo-runtime:21
 ```
 
 See the [`minimal`](examples/minimal) example for info on how to use a custom runtime. 
