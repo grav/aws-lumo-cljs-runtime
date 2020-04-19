@@ -6,6 +6,8 @@ This custom runtime makes it easy to run ClojureScript on AWS Lambda, without ha
 
 It uses [Lumo](https://github.com/anmonteiro/lumo) to execute ClojureScript and supports both ClojureScript (jars) and NodeJS dependencies (`node_modules`).
 
+Also featured in a [`:clojureD`](https://clojured.de/) lightening talk: https://www.youtube.com/watch?v=fVtawjGbvOQ&feature=youtu.be
+
 ### Purpose
 
 The runtime was initially created to lower the barrier for executing ClojureScript in AWS Lambda: you can write code directly in the AWS Lambda console and execute it by pressing a button. See this short video tutorial: https://vimeo.com/391237884
